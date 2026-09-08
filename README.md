@@ -13,7 +13,7 @@ leaves Reddit's login form.
 `npm run list` exists so anyone with the API key can see all the profiles and
 their ids without signing in again.
 
-## Setup (first time, from nothing)
+## STEP-BY-STEP Setup (feel free to skip steps which you already have)
 
 1. Install Node from https://nodejs.org. Pick the LTS download and run the
    installer with the defaults. This also installs `npm`.

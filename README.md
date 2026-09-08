@@ -17,8 +17,8 @@ their ids without signing in again.
 
 1. Install Node from https://nodejs.org. Pick the LTS download and run the
    installer with the defaults. This also installs `npm`.
-2. Get this folder onto your computer: on the GitHub page click the green
-   "Code" button, then "Download ZIP", and unzip it.
+2. Get this folder onto your computer: Git Clone. (If you don't know git, on the GitHub page click the green
+   "Code" button, then "Download ZIP", and unzip it.)
 3. Open a terminal in the folder.
    - Windows: open the folder in File Explorer, click the address bar, type
      `cmd`, press Enter.

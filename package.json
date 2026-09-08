@@ -1,0 +1,15 @@
+{
+  "name": "reddit-login",
+  "version": "1.0.0",
+  "description": "Sign into Reddit in a real browser and save the session to a Solari profile.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "node login.js",
+    "postinstall": "playwright install chromium"
+  },
+  "dependencies": {
+    "@solarisdk/browser": "^0.1.1",
+    "playwright": "^1.60.0"
+  }
+}

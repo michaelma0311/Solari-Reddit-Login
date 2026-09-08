@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node login.js",
-    "postinstall": "playwright install chromium"
+    "postinstall": "playwright install chromium",
+    "list": "node login.js list"
   },
   "dependencies": {
     "@solarisdk/browser": "^0.1.1",

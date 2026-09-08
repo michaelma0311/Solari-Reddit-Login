@@ -1,52 +1,51 @@
 # reddit-login
 
-Sign into Reddit in a browser on your own machine, then save that session to a
-Solari profile so an agent can browse as you. Your password never leaves
-Reddit's own login form.
+```bash
+npm start       # sign into Reddit, save the session to Solari, get a profile id
+npm run list    # print every Reddit profile on the Solari account with its id
+```
 
-Reddit refuses sign-ins from datacenter addresses, which is every cloud browser.
-It accepts an existing session from those same addresses, so the login happens
-here and only the cookies go to Solari.
+`npm start` exists because Reddit refuses sign-ins from cloud browsers but
+accepts an existing session from them. So you sign in here, on your own
+machine, and only the cookies go to Solari as a profile. Your password never
+leaves Reddit's login form.
+
+`npm run list` exists so anyone with the API key can see all the profiles and
+their ids without signing in again.
 
 ## Setup
 
-Node 20 or newer. Everything else (two packages plus Chromium) installs with:
+Node 20 or newer, then:
 
 ```bash
 npm install
 ```
 
-## Use
-
-```bash
-npm start
-```
+## npm start
 
 1. First run only: paste your Solari API key (dashboard, under API keys). It is
-   saved to `.env` next to the script.
-2. A Chrome window opens on Reddit's login page. Clear the "prove your humanity"
-   check if shown, then sign in normally. 2FA and email checks work as usual.
-3. The script polls for up to 10 minutes. When you are in, the window closes and
-   it prints:
+   saved to `.env`.
+2. Chrome opens on Reddit's login page. Clear the "prove your humanity" check if
+   shown, then sign in normally.
+3. When you are in, the window closes and it prints:
 
 ```
 Created the profile "reddit-<username>", now at version 1.
 
-  SOLARI_PROFILE_ID=prof_01J8XQ4T7N
+  SOLARI_PROFILE_ID=cmt4y4qaa000jnu01lyyfycpd
 ```
 
-Put that line in your agent's configuration.
+That id is what an agent passes to Solari as `profileId` to browse as you.
 
-## Renewing
 
-When the agent starts seeing logged-out pages, run `npm start` again. The same
-profile is refreshed in place, so the configured id keeps working.
+## npm run list
 
-## Multiple accounts
+```
+Reddit profiles on this Solari account:
 
-Run it once per account. Each username gets its own profile and id.
+  some_user                    cmt4y4qaa000jnu01lyyfycpd
+  other_user                   cmt4xzzo5000hnu011evya8db
+```
+**If you want to share your profile with somebody else, you would share this SOLARI_PROFILE_ID with them**
 
-## Notes
-
-- `.env` holds the API key and is git-ignored.
-- Cookies live on Solari. Delete the profile from the dashboard to revoke access.
+npm run list is just a convenient way to list out all your profiles

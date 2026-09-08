@@ -109,13 +109,31 @@ async function main() {
     const profile = await saveProfile(client, name, state);
     console.log(`${profile.reused ? "Refreshed" : "Created"} the profile "${name}", now at version ${profile.version}.`);
     console.log(`\nGive this line to whatever runs your agent:\n\n  SOLARI_PROFILE_ID=${profile.id}\n`);
+    await listProfiles(client);
+  } finally {
+    await client.close();
+  }
+}
+
+async function listProfiles(client) {
+  const all = (await client.profiles.list()).filter((p) => p.name.startsWith("reddit-"));
+  console.log("Reddit profiles on this Solari account:\n");
+  for (const p of all) console.log(`  ${p.name.slice(7).padEnd(28)} ${p.id}`);
+  if (!all.length) console.log("  none yet");
+  console.log();
+}
+
+async function list() {
+  const client = new Solari({ apiKey: storedKey() || (await askForKey()), baseUrl: "https://api.getsolari.com" });
+  try {
+    await listProfiles(client);
   } finally {
     await client.close();
   }
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
-  main().catch((err) => {
+  (process.argv[2] === "list" ? list() : main()).catch((err) => {
     console.error(`\n${err.message}`);
     process.exit(1);
   });

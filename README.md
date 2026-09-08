@@ -5,15 +5,11 @@ npm start       # sign into Reddit, save the session to Solari, get a profile id
 npm run list    # print every Reddit profile on the Solari account with its id
 ```
 
-`npm start` exists because Reddit refuses sign-ins from cloud browsers but
-accepts an existing session from them. So you sign in here, on your own
-machine, and only the cookies go to Solari as a profile. Your password never
-leaves Reddit's login form.
+`npm start` Sign in and create profile for Reddit saved to Solari
 
-`npm run list` exists so anyone with the API key can see all the profiles and
-their ids without signing in again.
+`npm run list` List all profiles you currently have
 
-## STEP-BY-STEP Setup (feel free to skip steps which you already have)
+## STEP-BY-STEP Setup (Skip steps which you already have)
 
 1. Install Node from https://nodejs.org. Pick the LTS download and run the
    installer with the defaults. This also installs `npm`.
@@ -38,7 +34,7 @@ first time you run `npm start` and saved to `.env` for you.
 
 1. First run only: paste your Solari API key into the terminal. Get it from the Solari
    dashboard under API keys, paste it in the terminal, press Enter. It is saved
-   to `.env` in this folder, and you are not asked again.
+   to `.env` in this folder, and you are not asked again. (To change your account, just change the API key under this .env)
 2. Chrome opens on Reddit's login page. Clear the "prove your humanity" check if
    shown, then sign in normally.
 3. When you are in, the window closes and it prints:

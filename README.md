@@ -13,18 +13,32 @@ leaves Reddit's login form.
 `npm run list` exists so anyone with the API key can see all the profiles and
 their ids without signing in again.
 
-## Setup
+## Setup (first time, from nothing)
 
-Node 20 or newer, then:
+1. Install Node from https://nodejs.org. Pick the LTS download and run the
+   installer with the defaults. This also installs `npm`.
+2. Get this folder onto your computer: on the GitHub page click the green
+   "Code" button, then "Download ZIP", and unzip it.
+3. Open a terminal in the folder.
+   - Windows: open the folder in File Explorer, click the address bar, type
+     `cmd`, press Enter.
+   - Mac: right-click the folder in Finder, choose "New Terminal at Folder".
+4. In that terminal, run:
 
 ```bash
 npm install
 ```
 
+That downloads everything the script needs. It takes a minute or two.
+
+You do not need to create any files. The Solari API key is asked for the
+first time you run `npm start` and saved to `.env` for you.
+
 ## npm start
 
-1. First run only: paste your Solari API key (dashboard, under API keys). It is
-   saved to `.env`.
+1. First run only: paste your Solari API key into the terminal. Get it from the Solari
+   dashboard under API keys, paste it in the terminal, press Enter. It is saved
+   to `.env` in this folder, and you are not asked again.
 2. Chrome opens on Reddit's login page. Clear the "prove your humanity" check if
    shown, then sign in normally.
 3. When you are in, the window closes and it prints:
@@ -32,13 +46,20 @@ npm install
 ```
 Created the profile "reddit-<username>", now at version 1.
 
-  SOLARI_PROFILE_ID=cmt4y4qaa000jnu01lyyfycpd
+  SOLARI_PROFILE_ID=cmt4y4qaa000hnu01lyyfycpd
 ```
 
 That id is what an agent passes to Solari as `profileId` to browse as you.
 
+**If you want to share your profile with somebody else, share this
+SOLARI_PROFILE_ID with them.**
+
+Run `npm start` again when the session expires. The same profile is refreshed
+and the id stays the same. One run per Reddit account.
 
 ## npm run list
+
+A convenient way to list all the profiles on the Solari account:
 
 ```
 Reddit profiles on this Solari account:
@@ -46,6 +67,3 @@ Reddit profiles on this Solari account:
   some_user                    cmt4y4qaa000jnu01lyyfycpd
   other_user                   cmt4xzzo5000hnu011evya8db
 ```
-**If you want to share your profile with somebody else, you would share this SOLARI_PROFILE_ID with them**
-
-npm run list is just a convenient way to list out all your profiles
